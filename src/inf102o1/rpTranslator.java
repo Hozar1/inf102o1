@@ -20,10 +20,8 @@ public class rpTranslator {
 //				wSpace.push(s);
 //				break   ;
 			case "+" :
-				operators.push(s);
-				
-				break;
 			case "*" :
+				//Black voodo magic
 				operators.push(s);
 				break;
 			default :
