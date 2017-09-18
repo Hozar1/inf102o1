@@ -10,7 +10,7 @@ public class rpTranslator {
 		Stack<String> numbers = new Stack<String>();
 		
 		String[] splitString = string.split(" ");
-		
+		String endString = "";
 		for(int i = 0; i<splitString.length ; i++)
 		{
 			String s = splitString[i];
@@ -23,6 +23,10 @@ public class rpTranslator {
 			case "*" :
 				//Black voodo magic
 				operators.push(s);
+				endString += operators.pop(); 
+				endString += operators.pop(); 
+				endString += operators.pop(); 
+				
 				break;
 			default :
 				numbers.push(s);
