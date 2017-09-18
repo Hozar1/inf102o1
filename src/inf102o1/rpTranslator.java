@@ -6,43 +6,42 @@ public class rpTranslator {
 	public static String rpToInf(String string) {
 		
 		Stack<String> operators = new Stack<String>();
-//		Stack<String> wSpace = new Stack<String>();
-		Stack<String> numbers = new Stack<String>();
-		
+		string.replaceAll("\\s","");
 		String[] splitString = string.split(" ");
+		System.out.println("Start split " + splitString[2] );
 		String endString = "";
+		String tempString = "";
 		for(int i = 0; i<splitString.length ; i++)
 		{
 			String s = splitString[i];
 			
 			switch(s){
-//			case " " :
-//				wSpace.push(s);
-//				break   ;
-			case "+" :
 			case "*" :
-				//Black voodo magic
+			case "+" :
+				System.out.println("Operator engaged " + s);
+				tempString += operators.pop(); 
 				operators.push(s);
-				endString += operators.pop(); 
-				endString += operators.pop(); 
-				endString += operators.pop(); 
-				
+				tempString += operators.pop(); 
+				tempString += operators.pop(); 
+				System.out.println(tempString);
+				tempString = "(" + tempString + ")";
+				System.out.println(tempString);
 				break;
 			default :
-				numbers.push(s);
+				operators.push(s);
 			
 			}
 			System.out.println(operators);
-			System.out.println(numbers);
+			
 		}
 		
 		
-		
+		System.out.println(endString);
 		return null;
 	}
 	
 	public static void main(String[] args){
-		  String a = "1 3  +  2 4 2 * + *";
+		  String a = "1 3 + 2 4 2 * + *";
 		  rpToInf(a);
 	  
 		}
