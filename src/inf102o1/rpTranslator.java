@@ -1,4 +1,5 @@
 package inf102o1;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class rpTranslator {
@@ -6,9 +7,14 @@ public class rpTranslator {
 	public static String rpToInf(String string) {
 		
 		Stack<String> operators = new Stack<String>();
+		Stack<String> shitStack = new Stack<String>();
+		
+		
 		string.replaceAll("\\s","");
 		String[] splitString = string.split(" ");
 		System.out.println("Start split " + splitString[2] );
+		
+		
 		String endString = "";
 		String tempString = "";
 		for(int i = 0; i<splitString.length ; i++)
@@ -19,19 +25,41 @@ public class rpTranslator {
 			case "*" :
 			case "+" :
 				System.out.println("Operator engaged " + s);
-				tempString += operators.pop(); 
-				operators.push(s);
-				tempString += operators.pop(); 
-				tempString += operators.pop(); 
-				System.out.println(tempString);
-				tempString = "(" + tempString + ")";
-				System.out.println(tempString);
+				if(operators.toArray().length > 1){
+					tempString += operators.pop(); 
+					operators.push(s);
+					tempString += operators.pop(); 
+					tempString += operators.pop(); 
+					System.out.println(tempString);
+					tempString = "(" + tempString + ")";
+					System.out.println(tempString);
+					shitStack.push(tempString);
+					tempString = "";
+				}
+				else if(operators.toArray().length > 0) 
+				{
+					tempString +=operators.pop();
+					tempString +=s;
+					System.out.println("popping ops " + tempString);
+					tempString +=shitStack.pop();
+					tempString = "(" + tempString + ")";
+					shitStack.push(tempString);
+					tempString = "";
+				}
+				else
+				{
+					endString +=shitStack.pop();
+					endString +=s;
+					endString +=shitStack.pop();
+					endString = "(" + endString + ")";
+				}
+				
 				break;
 			default :
 				operators.push(s);
 			
 			}
-			System.out.println(operators);
+			System.out.println(shitStack);
 			
 		}
 		
