@@ -10,23 +10,58 @@ import java.util.Stack;
 public class siteBrowser {
 
 	public static void main(String[] args) throws IOException {
-		System.out.println(System.getProperty("user.dir"));
-		
 		Stack<String> baseStack = new Stack<String>();
+		Stack<String> backStack = new Stack<String>();
+		Stack<String> forwardStack = new Stack<String>();
 		
 		File inFile = new File (System.getProperty("user.dir") + "\\src\\inf102o1\\timeline.txt");
 	    Scanner sc = new Scanner (inFile);
 	    while (sc.hasNextLine())
 	    {
 	      String line = sc.nextLine();
-	      baseStack.push(line);
-	      
+	      baseStack.push(line);	      
 	    }
 	    sc.close();
-	    Collections.reverse(baseStack);
 	    
+	    Collections.reverse(baseStack);    	
+	    Integer lengthCommand = Integer.valueOf(baseStack.pop()); 
 	    
-	    System.out.println(baseStack.peek());
+	    String tempString2="";
+	    for(int i=1;i<lengthCommand;i++)
+	    {
+	    	String tempString = "";
+	    	
+	    	tempString = baseStack.pop();
+	    	//if(tempString=((tempString2= "∗back∗") && (tempString!="∗back∗")||(tempString!="∗forward∗")))
+	    	if(tempString2== "∗back∗" && (tempString !="∗back∗")||(tempString!="∗forward∗")) 
+	    		forwardStack.removeAllElements();
+	    	switch(tempString){   	   	
+	    		
+	    	case"∗back∗":
+	    		tempString = backStack.pop();	    		
+	    		forwardStack.push(tempString);
+	    		System.out.println(backStack.peek());
+	    		break;
+	    	case"∗forward∗":
+	    		if(!forwardStack.empty()){
+	    			tempString = forwardStack.pop();
+	    			backStack.push(tempString);
+	    			System.out.println(backStack.peek());
+	    		}
+	    		else
+	    			System.out.println("Warning :   l a s t   w e b s i t e");
+	    		
+	    		break;
+	    	default:
+	    		backStack.push(tempString);
+	    		System.out.println(backStack.peek());
+	    		    	   		
+	    	tempString2 = tempString;
+	    	}
+	    	
+	    	
+	    }
+	    
 	  }
 	
 
