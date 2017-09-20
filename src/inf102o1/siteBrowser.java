@@ -33,8 +33,8 @@ public class siteBrowser {
 	    	
 	    	tempString = baseStack.pop();
 	    	//if(tempString=((tempString2= "∗back∗") && (tempString!="∗back∗")||(tempString!="∗forward∗")))
-	    	if(tempString2== "∗back∗" && (tempString !="∗back∗")||(tempString!="∗forward∗")) 
-	    		forwardStack.removeAllElements();
+	    	//if(tempString2== "∗back∗" && (tempString !="∗back∗")||(tempString!="∗forward∗")) 
+	    	//	forwardStack.removeAllElements();
 	    	switch(tempString){   	   	
 	    		
 	    	case"∗back∗":
@@ -53,6 +53,9 @@ public class siteBrowser {
 	    		
 	    		break;
 	    	default:
+	    		if (tempString2== "∗back∗" || tempString2== "∗forward∗" ){
+	    			forwardStack.removeAllElements();
+	    		}
 	    		backStack.push(tempString);
 	    		System.out.println(backStack.peek());
 	    		    	   		
