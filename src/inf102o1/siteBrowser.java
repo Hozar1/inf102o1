@@ -24,6 +24,8 @@ public class siteBrowser {
 	    }
 	    sc.close();
 	    Collections.reverse(baseStack);
+	    
+	    
 	    System.out.println(baseStack.peek());
 	  }
 	
