@@ -54,7 +54,7 @@ public class siteBrowser {
 	    		break;
 	    	default:
 	    		if (tempString2== "∗back∗" || tempString2== "∗forward∗" ){
-	    			forwardStack.removeAllElements();
+	    			forwardStack.clear();
 	    		}
 	    		backStack.push(tempString);
 	    		System.out.println(backStack.peek());
