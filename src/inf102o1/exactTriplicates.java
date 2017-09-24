@@ -13,11 +13,11 @@ public class exactTriplicates {
 	//if the item == pKey
 	//dCount++ --> if dCount ==3 return pKey and break
 	//else set pKey == Item
-	
+
 	public static String findTrip(ArrayList<String> arr){
 		//Sort,removing duplicates within each list
-		
-		
+
+
 		//go through each element in list
 		//if the item == pKey
 		//dCount++ --> if dCount ==3 return pKey and break
@@ -25,7 +25,7 @@ public class exactTriplicates {
 		String pKey="";
 		String item="";
 		int dCount =0;
-		
+
 		for(int i=0;i<arr.size();i++)
 		{
 			if(arr.get(i) == pKey)
@@ -41,11 +41,11 @@ public class exactTriplicates {
 			}
 		}
 
-		
-		
-		
+
+
+
 		return null;
-		
+
 	}
 
 
@@ -53,7 +53,7 @@ public class exactTriplicates {
 
 
 	public static void main(String[] args) throws FileNotFoundException{
-		
+
 		ArrayList<String> list0 = new ArrayList<String>();
 		ArrayList<String> list1 = new ArrayList<String>();
 		ArrayList<String> list2 = new ArrayList<String>();
@@ -63,20 +63,21 @@ public class exactTriplicates {
 		outerList.add(list1);
 		outerList.add(list2);
 		outerList.add(list3);
-		
-		
+
+
 		for(int i=0;i<4;i++){
-					
+
 			File inFile = new File (System.getProperty("user.dir") + "\\src\\inf102o1\\list"+i+".txt");
 			Scanner sc = new Scanner (inFile);
 			while (sc.hasNextLine())
 			{
 				String line = sc.nextLine();
-				outerList.get(i).add(line);
+				if(!outerList.contains(outerList.get(i)))
+					outerList.get(i).add(line);
 			}
 			sc.close();
 		}
-		
+
 		//merge all lists
 		ArrayList<String> combined = new ArrayList<String>();
 		for(int i=0;i<4;i++)
