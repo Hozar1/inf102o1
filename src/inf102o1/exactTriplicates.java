@@ -3,6 +3,7 @@ package inf102o1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class exactTriplicates {
@@ -16,7 +17,7 @@ public class exactTriplicates {
 
 	public static String findTrip(ArrayList<String> arr){
 		//Sort,removing duplicates within each list
-
+		Collections.sort(arr);
 
 		//go through each element in list
 		//if the item == pKey
@@ -40,16 +41,8 @@ public class exactTriplicates {
 				dCount = 1;
 			}
 		}
-
-
-
-
 		return null;
-
 	}
-
-
-
 
 
 	public static void main(String[] args) throws FileNotFoundException{
@@ -82,7 +75,8 @@ public class exactTriplicates {
 		ArrayList<String> combined = new ArrayList<String>();
 		for(int i=0;i<4;i++)
 			combined.addAll(outerList.get(i));
-		findTrip(combined);
+		System.out.println(findTrip(combined));
+
 
 
 	}
