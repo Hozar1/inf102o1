@@ -30,7 +30,7 @@ public class exactTriplicates {
 		for(int i=0;i<arr.size();i++)
 		{
 			item =arr.get(i);
-			if(item == pKey)
+			if(item.equals(pKey))
 			{
 				dCount++;
 				if(dCount == 3)
