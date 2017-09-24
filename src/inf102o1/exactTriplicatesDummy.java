@@ -81,7 +81,6 @@ public class exactTriplicatesDummy<Stringkey extends Comparable<Stringkey> , Lis
 
 		for(int i=0;i<arr.size();i++)
 		{
-			
 		      Integer k = st.getelem(arr.get(i));
 		      if (k!=null) st.put(arr.get(i),k+1);
 		      else st.put(arr.get(i),1);
