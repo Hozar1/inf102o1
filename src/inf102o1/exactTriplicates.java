@@ -17,7 +17,7 @@ public class exactTriplicates {
 
 	public static String findTrip(ArrayList<String> arr){
 		//Sort,removing duplicates within each list
-		Collections.sort(arr);
+		
 
 		//go through each element in list
 		//if the item == pKey
@@ -65,7 +65,7 @@ public class exactTriplicates {
 			while (sc.hasNextLine())
 			{
 				String line = sc.nextLine();
-				if(!outerList.contains(outerList.get(i)))
+				if(!outerList.get(i).contains(line))
 					outerList.get(i).add(line);
 			}
 			sc.close();
@@ -75,6 +75,8 @@ public class exactTriplicates {
 		ArrayList<String> combined = new ArrayList<String>();
 		for(int i=0;i<4;i++)
 			combined.addAll(outerList.get(i));
+		
+		
 		System.out.println(findTrip(combined));
 
 
