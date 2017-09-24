@@ -16,8 +16,8 @@ public class exactTriplicates {
 	//else set pKey == Item
 
 	public static String findTrip(ArrayList<String> arr){
-		//Sort,removing duplicates within each list
-		
+		//Sort
+		arr.sort(null);
 
 		//go through each element in list
 		//if the item == pKey
@@ -29,7 +29,8 @@ public class exactTriplicates {
 
 		for(int i=0;i<arr.size();i++)
 		{
-			if(arr.get(i) == pKey)
+			item =arr.get(i);
+			if(item == pKey)
 			{
 				dCount++;
 				if(dCount == 3)
@@ -37,7 +38,7 @@ public class exactTriplicates {
 			}
 			else
 			{
-				pKey = arr.get(i);
+				pKey = item;
 				dCount = 1;
 			}
 		}
