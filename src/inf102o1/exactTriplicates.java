@@ -14,11 +14,37 @@ public class exactTriplicates {
 	//dCount++ --> if dCount ==3 return pKey and break
 	//else set pKey == Item
 	
-	public static ArrayList<ArrayList> findTrip(ArrayList arr){
+	public static String findTrip(ArrayList<String> arr){
+		//Sort,removing duplicates within each list
+		
+		
+		//go through each element in list
+		//if the item == pKey
+		//dCount++ --> if dCount ==3 return pKey and break
+		//else set pKey == Item
+		String pKey="";
+		String item="";
+		int dCount =0;
+		
+		for(int i=0;i<arr.size();i++)
+		{
+			if(arr.get(i) == pKey)
+			{
+				dCount++;
+				if(dCount == 3)
+					return pKey;
+			}
+			else
+			{
+				pKey = arr.get(i);
+				dCount = 1;
+			}
+		}
+
 		
 		
 		
-		return arr;
+		return null;
 		
 	}
 
@@ -50,6 +76,12 @@ public class exactTriplicates {
 			}
 			sc.close();
 		}
+		
+		//merge all lists
+		ArrayList<String> combined = new ArrayList<String>();
+		for(int i=0;i<4;i++)
+			combined.addAll(outerList.get(i));
+		findTrip(combined);
 
 
 	}
