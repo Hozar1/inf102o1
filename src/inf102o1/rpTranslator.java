@@ -5,10 +5,11 @@ import java.util.Stack;
 public class rpTranslator {
 
 	public static String rpToInf(String string) {
-		
-		Stack<String> operators = new Stack<String>();
-		Stack<String> shitStack = new Stack<String>();	
-		
+		//Split into 2 stacks, eleStack where all the numbers and operators go
+		//tempStack where we hold them when we incapsulate them
+		Stack<String> eleStack = new Stack<String>();
+		Stack<String> tempStack = new Stack<String>();	
+		//Split them up into elements in a list
 		string.replaceAll("\\s","");
 		String[] splitString = string.split(" ");		
 		String endString = "";
@@ -19,38 +20,40 @@ public class rpTranslator {
 			switch(s){
 			case "*" :
 			case "+" :
-				if(operators.toArray().length > 1){
-					tempString += operators.pop(); 
-					operators.push(s);
-					tempString += operators.pop(); 
-					tempString += operators.pop();
+				//Since we want it to be number operator number we have to pop before pushing
+				if(eleStack.toArray().length > 1){
+					tempString += eleStack.pop(); 
+					eleStack.push(s);
+					tempString += eleStack.pop(); 
+					tempString += eleStack.pop();
 					tempString = "(" + tempString + ")";
-					shitStack.push(tempString);
+					tempStack.push(tempString);
 					tempString = "";
 				}
-				else if(operators.toArray().length > 0) 
+				//Case of only number and operator
+				else if(eleStack.toArray().length > 0) 
 				{
-					tempString +=operators.pop();
+					tempString +=eleStack.pop();
 					tempString +=s;
-					tempString +=shitStack.pop();
+					tempString +=tempStack.pop();
 					tempString = "(" + tempString + ")";
-					shitStack.push(tempString);
+					tempStack.push(tempString);
 					tempString = "";
 				}
+				//Case of only operator
 				else
 				{
-					endString +=shitStack.pop();
+					endString +=tempStack.pop();
 					endString +=s;
-					endString +=shitStack.pop();
+					endString +=tempStack.pop();
 					endString = "(" + endString + ")";
 				}				
 				break;
+			//If it is not an operator, simply push to stack
 			default :
-				operators.push(s);			
+				eleStack.push(s);			
 			}			
 		}
-		
-		
 		System.out.println(endString);
 		return null;
 	}
