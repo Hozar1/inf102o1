@@ -64,7 +64,7 @@ public class exactTriplicates {
 		outerList.add(list2);
 		outerList.add(list3);
 
-		//Read in 4 files from user directory, throwing them into their repsective lists
+		//Read in 4 files from user directory, throwing them into their respective lists
 		for(int i=0;i<4;i++){
 			File inFile = new File (System.getProperty("user.dir") + "\\src\\inf102o1\\list"+i+".txt");
 			Scanner sc = new Scanner (inFile);

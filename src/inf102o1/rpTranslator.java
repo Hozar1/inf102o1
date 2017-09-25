@@ -5,14 +5,13 @@
  * 
  */
 package inf102o1;
-import java.util.Arrays;
 import java.util.Stack;
 
 public class rpTranslator {
 
 	public static String rpToInf(String string) {
 		//Split into 2 stacks, eleStack where all the numbers and operators go
-		//tempStack where we hold them when we incapsulate them
+		//tempStack where we hold them when we encapsulate them
 		Stack<String> eleStack = new Stack<String>();
 		Stack<String> tempStack = new Stack<String>();	
 		//Split them up into elements in a list
