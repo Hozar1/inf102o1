@@ -3,7 +3,6 @@ import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch; 
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.BinarySearch;
-import java.math.*;
 import java.util.Arrays;
 
 public class profitSorting{
