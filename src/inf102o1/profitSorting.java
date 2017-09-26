@@ -39,10 +39,10 @@ public class profitSorting{
 		int[] alg2 = new int[Nlength];
 		for(int t=0; t < Times;t++){
 			for(int k=0;k < Nlength;k++){
-				alg1[k] = StdRandom.uniform((int) 1e6 , (int) 1e7);
+				alg1[k] = StdRandom.uniform((int) 1e7);
 				alg2[k]=alg2[k];
 			}
-			seachTarget = StdRandom.uniform((int) 1e6 , (int) 1e7);
+			seachTarget = StdRandom.uniform((int) 1e7);
 			TimeAlg1 += runBS(alg1,seachTarget);
 			TimeAlg2 += runLN(alg1,seachTarget);
 		}
@@ -50,8 +50,14 @@ public class profitSorting{
 		return TimeAlg1/TimeAlg2;
 	}
 	
-	static public void main(){
+	public void main(){
 		
+		double Compared =test((int)1e6 ,5);
+		StdOut.println("Binary / Linear = " + Compared);
+		for(int s=10; s<80; s+=10){
+			Compared = test((int)1e6 ,s);
+			StdOut.println("Binary / Linear = " + Compared);
+		}
 	}
 
 }
