@@ -1,7 +1,12 @@
-package inf102o1;
+/**
+ * 
+ * @author Ole Tobias Bird
+ * @author Martin Breistein
+ * 
+ */
 
+package inf102o1;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Scanner;
