@@ -1,11 +1,11 @@
 /**
- * 
  * @author Ole Tobias Bird
  * @author Martin Breistein
- * 
  */
 
+
 package inf102o1;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
