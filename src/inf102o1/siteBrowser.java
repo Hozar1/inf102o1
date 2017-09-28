@@ -37,9 +37,6 @@ public class siteBrowser {
 	    	String tempString = "";
 	    	
 	    	tempString = baseStack.pop();
-	    	//if(tempString=((tempString2= "∗back∗") && (tempString!="∗back∗")||(tempString!="∗forward∗")))
-	    	//if(tempString2== "∗back∗" && (tempString !="∗back∗")||(tempString!="∗forward∗")) 
-	    	//	forwardStack.removeAllElements();
 	    	switch(tempString){   	   	
 	    		
 	    	case"∗back∗":

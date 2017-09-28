@@ -1,5 +1,6 @@
 
 import edu.princeton.cs.algs4.StdOut;  import edu.princeton.cs.algs4.Stopwatch;
+import inf102o1.ArrayListST;
 
 public class STCompare {
   
