@@ -58,75 +58,87 @@ public class exactTriplicatesDummy<Stringkey extends Comparable<Stringkey> , Lis
 		  else return null;
 	  }
 	  
-	//Merge all lists
-	//sort the long list
-	//go through each element in list
-	//if the item == pKey
-	//dCount++ --> if dCount ==3 return pKey and break
-	//else set pKey == Item
-
-	public static String findTrip(ArrayList<String> arr){
-		ArrayListST<String,Integer> st = new ArrayListST<>();
-		
-		//Sort,removing duplicates within each list
-		
-
+	  	//Merge all lists
+		//sort the long list
 		//go through each element in list
 		//if the item == pKey
 		//dCount++ --> if dCount ==3 return pKey and break
 		//else set pKey == Item
-		String pKey="";
-		String item="";
-		int dCount =0;
 
-		for(int i=0;i<arr.size();i++)
-		{
-		      Integer k = st.getelem(arr.get(i));
-		      if (k!=null) st.put(arr.get(i),k+1);
-		      else st.put(arr.get(i),1);
-		      assert st.show();
-		}
-		return null;
-	}
-
-
-	public static void main(String[] args) throws FileNotFoundException{
-
-		ArrayList<String> list0 = new ArrayList<String>();
-		ArrayList<String> list1 = new ArrayList<String>();
-		ArrayList<String> list2 = new ArrayList<String>();
-		ArrayList<String> list3 = new ArrayList<String>();
-		ArrayList<ArrayList> outerList = new ArrayList<ArrayList>();
-		outerList.add(list0);
-		outerList.add(list1);
-		outerList.add(list2);
-		outerList.add(list3);
-
-
-		for(int i=0;i<4;i++){
-
-			File inFile = new File (System.getProperty("user.dir") + "\\src\\inf102o1\\list"+i+".txt");
-			Scanner sc = new Scanner (inFile);
-			while (sc.hasNextLine())
+		public static String findTrip(ArrayList<String> arr){
+			//Sort
+			arr.sort(null);
+			//go through each element in list
+			//if the item == pKey
+			//dCount++ --> if dCount ==3&& it is either the last element or
+			//the next item is not equals, then return pKey
+			//else set pKey == Item
+			ArrayListST<String,Integer> dCoutlist = new ArrayListST<>();
+			String item="";
+			for(int i=0;i<arr.size();i++)
 			{
-				String line = sc.nextLine();
-				if(!outerList.get(i).contains(line))
-					outerList.get(i).add(line);
+				item =arr.get(i);
+				Integer nrInArray = dCoutlist.get(item);
+				if(nrInArray != null) {
+					dCoutlist.put(item,nrInArray+1);
+				}
+				else dCoutlist.put(item, 1);
+				
 			}
-			sc.close();
+//			for (int i=0; i<dCoutlist.size();i++){
+//				if (dCoutlist==3){
+//					
+//				}
+//				
+			//}	
+			Iterator<String> iter = dCoutlist.keysIterator();
+			 while (iter.hasNext()) {
+			      String next = iter.next();
+			      StdOut.println(dCoutlist.get(next) + "\t" + next);
+			    }
+			return null;
 		}
 
-		//merge all lists
-		ArrayList<String> combined = new ArrayList<String>();
-		for(int i=0;i<4;i++)
-			combined.addAll(outerList.get(i));
-		
-		
-		System.out.println(findTrip(combined));
+
+		@SuppressWarnings("unchecked")
+		public static void main(String[] args) throws FileNotFoundException{
+			//Create empty lists, ready for input. Add them to an outerlist
+			ArrayList<String> list0 = new ArrayList<String>();
+			ArrayList<String> list1 = new ArrayList<String>();
+			ArrayList<String> list2 = new ArrayList<String>();
+			ArrayList<String> list3 = new ArrayList<String>();
+			@SuppressWarnings("rawtypes")
+			ArrayList<ArrayList> outerList = new ArrayList<ArrayList>();
+			outerList.add(list0);
+			outerList.add(list1);
+			outerList.add(list2);
+			outerList.add(list3);
+
+			//Read in 4 files from user directory, throwing them into their respective lists
+			for(int i=0;i<4;i++){
+				File inFile = new File (System.getProperty("user.dir") + "\\src\\inf102o1\\list"+i+".txt");
+				Scanner sc = new Scanner (inFile);
+				while (sc.hasNextLine())
+				{
+					String line = sc.nextLine();
+					if(!outerList.get(i).contains(line))
+						outerList.get(i).add(line);
+				}
+				sc.close();
+			}
+
+			//merge all lists
+			ArrayList<String> combined = new ArrayList<String>();
+			for(int i=0;i<4;i++){
+				outerList.get(i).sort(null);
+				combined.addAll(outerList.get(i));	
+			}
+
+			System.out.println(findTrip(combined));
 
 
 
-	}
+		}
 
 
 
