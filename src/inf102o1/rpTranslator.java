@@ -6,7 +6,7 @@ public class rpTranslator {
 
 	public static String rpToInf(String string) {
 		
-		Stack<String> shitStack = new Stack<String>();	
+		Stack<String> expressionStack = new Stack<String>();	
 		
 		string.replaceAll("\\s","");
 		String[] splitString = string.split(" ");
@@ -21,17 +21,17 @@ public class rpTranslator {
 			case "/" :	
 			case "*" :
 			case "+" :
-					endString +=shitStack.pop();
+					endString +=expressionStack.pop();
 					endString +=s;
-					endString +=shitStack.pop();
+					endString +=expressionStack.pop();
 					endString = "(" + endString + ")";
-					shitStack.push(endString);	
+					expressionStack.push(endString);	
 				break;
 			default :
-				shitStack.push(s);			
+				expressionStack.push(s);			
 			}			
 		}
-		System.out.println(shitStack.pop());
+		System.out.println(expressionStack.pop());
 		return null;
 	}
 	
