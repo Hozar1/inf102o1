@@ -79,8 +79,10 @@ public class exactTriplicates {
 
 		//merge all lists
 		ArrayList<String> combined = new ArrayList<String>();
-		for(int i=0;i<4;i++)
-			combined.addAll(outerList.get(i));	
+		for(int i=0;i<4;i++){
+			
+			combined.addAll(outerList.get(i));
+		}
 
 		System.out.println(findTrip(combined));
 
